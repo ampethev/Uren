@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f7fb" />
+  <meta name="description" content="Bereken je gewerkte uren met starttijd, eindtijd en pauze." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Uren" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Urenberekenaar</title>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="branding"><h1>Urenberekenaar</h1><p>Snel je gewerkte uren berekenen</p></div>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="Wissel kleurmodus" title="Licht, donker of automatisch">☀</button>
+    </header>
+
+    <section class="time-grid" aria-label="Begin- en einduur">
+      <div class="time-card"><h2>Startuur</h2><div class="wheel" id="startWheel" role="listbox" tabindex="0" aria-label="Startuur, scroll per kwartier"></div></div>
+      <div class="time-card"><h2>Einduur</h2><div class="wheel" id="endWheel" role="listbox" tabindex="0" aria-label="Einduur, scroll per kwartier"></div></div>
+    </section>
+
+    <section class="pause-card" aria-label="Pauzeduur">
+      <div class="section-head"><h2>☕ &nbsp;Pauzeduur</h2><span id="pauseLabel">30 minuten</span></div>
+      <div class="pause-grid" id="pauseGrid">
+        <button type="button" data-pause="0">0m</button>
+        <button type="button" data-pause="15">15m</button>
+        <button type="button" data-pause="30">30m</button>
+        <button type="button" data-pause="45">45m</button>
+        <button type="button" data-pause="60">1u</button>
+        <button type="button" data-pause="90">1u30</button>
+        <button type="button" data-pause="120">2u</button>
+        <button type="button" data-pause="180">3u</button>
+      </div>
+      <label class="other-pause" for="customPause"><span>Andere pauzeduur</span><select id="customPause" aria-label="Andere pauzeduur"></select></label>
+    </section>
+
+    <section class="result" aria-live="polite" aria-atomic="true">
+      <h2>◷ &nbsp;GEWERKTE UREN</h2>
+      <strong id="total">8:30</strong>
+      <p id="totalWords">8 uur en 30 minuten</p>
+      <p id="note" class="note" hidden></p>
+    </section>
+    <footer>Je laatste keuzes worden op dit toestel bewaard.</footer>
+  </main>
+</body>
+</html>
